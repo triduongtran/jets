@@ -87,8 +87,14 @@ module Jets::Job::Dsl
         resource.definition # returns a definition to be added by associated_resources
       end
 
-      def iot_topic_rule(attributes)
-        resource = Jets::Resource::Iot::TopicRule.new(attributes)
+      def iot_topic_rule_payload(sql, props={})
+        base = { topic_rule_payload: sql }
+        props = base.merge(props)
+        iot_topic_rule(props)
+      end
+
+      def iot_topic_rule(props={})
+        resource = Jets::Resource::Iot::TopicRule.new(props)
         # Eager define resource
         resource(resource.definition) # add associated resources immediately
       end
