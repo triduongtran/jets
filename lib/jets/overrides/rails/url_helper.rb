@@ -19,7 +19,6 @@ module Jets::UrlHelper
             raise ArgumentError, "Please provided a String to link_to as the the second argument. The Jets link_to helper takes as the second argument."
           end
 
-
     puts "url before add_stage_name: #{url}"
     url2 = add_stage_name(url)
     puts "url2 #{url2}"

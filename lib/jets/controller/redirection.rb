@@ -11,7 +11,9 @@ class Jets::Controller
       # if no location.host, we been provided a relative host
       if !uri.host && actual_host
         url = "/#{url}" unless url.starts_with?('/')
+        puts "Redirection#redirect_to url1 #{url}"
         url = add_stage_name(url)
+        puts "Redirection#redirect_to url2 #{url}"
         redirect_url = actual_host + url
       else
         redirect_url = url
