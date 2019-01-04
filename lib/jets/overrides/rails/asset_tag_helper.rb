@@ -10,7 +10,9 @@ module Jets::AssetTagHelper
   end
 
   def stylesheet_link_tag(*sources, **options)
+    puts "stylesheet_link_tag 1"
     sources = sources.map { |s| s3_public_url(s, :stylesheets) }
+    puts "stylesheet_link_tag 2"
     super
   end
 
