@@ -22,13 +22,13 @@ class Jets::Builders
     # This keeps the code size down to help keep it in size limit so we can use the
     # live Lambda console editor.
     def clean_webpack_assets
-      FileUtils.rm_rf("#{@project_root}/app/javascript/src")
+      # FileUtils.rm_rf("#{@project_root}/app/javascript/src")
 
-      return unless File.exist?("#{@project_root}/public/packs") # this class works for rack subfolder too
-      FileUtils.mv("#{@project_root}/public/packs/manifest.json", "#{stage_area}/manifest.json")
-      FileUtils.rm_rf("#{@project_root}/public/packs")
-      FileUtils.mkdir_p("#{@project_root}/public/packs")
-      FileUtils.mv("#{stage_area}/manifest.json", "#{@project_root}/public/packs/manifest.json")
+      # return unless File.exist?("#{@project_root}/public/packs") # this class works for rack subfolder too
+      # FileUtils.mv("#{@project_root}/public/packs/manifest.json", "#{stage_area}/manifest.json")
+      # FileUtils.rm_rf("#{@project_root}/public/packs")
+      # FileUtils.mkdir_p("#{@project_root}/public/packs")
+      # FileUtils.mv("#{stage_area}/manifest.json", "#{@project_root}/public/packs/manifest.json")
     end
 
     def removals

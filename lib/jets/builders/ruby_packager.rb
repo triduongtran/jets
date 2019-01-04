@@ -77,7 +77,7 @@ class Jets::Builders
       puts "Tidying project: removing ignored files to reduce package size."
       tidy_project(@full_app_root)
       # The rack sub project has it's own gitignore.
-      tidy_project(@full_app_root+"/rack")
+      # tidy_project(@full_app_root+"/rack")
     end
 
     def tidy_project(path)
