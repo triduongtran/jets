@@ -13,6 +13,7 @@ module Jets::Commands
         [:force, type: :boolean, desc: "Bypass overwrite are you sure prompt for existing files."],
         [:git, type: :boolean, default: true, desc: "Git initialize the project"],
         [:mode, default: 'html', desc: "mode: #{VALID_MODES.join(',')}"],
+        [:dynamodb, default: 'dynomite', desc: "Nosqldb adapter: dynomite/dynamodbid"],
         [:repo, desc: "GitHub repo to use. Format: user/repo"],
         [:webpacker, type: :boolean, default: true, desc: "Install webpacker"],
       ]

@@ -75,6 +75,13 @@ private
       ]
     end
 
+    if @options[:dynamodb] == false
+      excludes += %w[
+        dynamodb.yml
+        models/application_item
+      ]
+    end
+
     if excludes.empty?
       {}
     else
