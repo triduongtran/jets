@@ -53,6 +53,8 @@ Use the `--repo` flag to clone an example project from GitHub instead.  With thi
                                  # Default: true
 [--mode=MODE]                    # mode: html,api,job
                                  # Default: html
+[--dynamodb=DYNAMODB]            # Nosqldb adapter: dynomite/dynamodbid
+                                 # Default: dynomite
 [--repo=REPO]                    # GitHub repo to use. Format: user/repo
 [--webpacker], [--no-webpacker]  # Install webpacker
                                  # Default: true
