@@ -10,11 +10,17 @@ class Jets::Booter
       Jets::Dotenv.load!
 
       Jets.application.setup!
-      app_initializers
+      # Eager load after auto_load paths configured in setup! so we load both Jets and user
+      # project code. Rather have user find out early than late. This also ensure that internal
+      # Turbines get run.
+      Jets.eager_load!
       turbine_initializers
+      # Load environments configs after Turbine initializers so Turbines can defined config
+      # options and they are available in user's project environment configs.
+      Jets.application.load_environments_config
+      app_initializers
       Jets.application.finish!
 
-      Jets.eager_load!
       setup_db
       # build_middleware_stack # TODO: figure out how to build middleware during Jets.boot without breaking jets new and webpacker:install
 

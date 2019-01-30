@@ -15,9 +15,22 @@ class Jets::Application
     load_configs
   end
 
-  def finish!
-    load_inflections
+  def load_configs
+    load_app_config
     setup_auto_load_paths
+    load_db_config
+  end
+
+  # After the mimimal template gets build, we need to reload it for the full stack
+  # creation. This allows us to reference IAM policies configs that depend on the
+  # creation of the s3 bucket.
+  def reload_configs!
+    load_configs
+  end
+
+  def finish!
+    deprecated_configs_message
+    load_inflections
     load_routes
   end
 
@@ -131,26 +144,12 @@ class Jets::Application
     load app_config # use load instead of require so reload_configs! works
   end
 
-  # After the mimimal template gets build, we need to reload it for the full stack
-  # creation. This allows us to reference IAM policies configs that depend on the
-  # creation of the s3 bucket.
-  def reload_configs!
-    load_configs
-  end
-
   def load_environments_config
     env_file = "#{Jets.root}/config/environments/#{Jets.env}.rb"
     if File.exist?(env_file)
       code = IO.read(env_file)
       instance_eval(code)
     end
-  end
-
-  def load_configs
-    load_app_config
-    load_db_config
-    load_environments_config
-    deprecated_configs_message
   end
 
   def deprecated_configs_message
