@@ -24,7 +24,7 @@ module Jets
 
       ActiveSupport.on_load(:action_mailer) do
         # TODO: figure out helpers
-        # include AbstractController::UrlFor
+        include AbstractController::UrlFor
         # extend ::AbstractController::Railties::RoutesHelpers.with(app.routes, false)
         # include app.routes.mounted_helpers
 
